@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Engineering Quiz</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000;
+            background-image: url('/static/dataeng.png');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            color: #f1f1f1;
+        }
+
+        header {
+            background-color: transparent;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header .logo {
+            width: auto;
+            height: 80px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        h1 {
+            margin: 0.5rem 0 0;
+            font-size: 2.5rem;
+            color: #ffcc00;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ddd;
+            font-weight: 300;
+        }
+        /* Timer styles */
+        .timer {
+            font-size: 2.5rem; /* Make timer larger */
+            font-weight: bold;
+            color: #ff0000;
+            position: fixed; /* Fix to top-right corner */
+            top: 20px;
+            right: 20px;
+            z-index: 1000; /* Stay on top while scrolling */
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent background for readability */
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: #000000;
+        }
+
+        label {
+            display: block;
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+            color: #000000;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #008cfc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: transparent; 
+            color: #ddd;
+        }
+
+        footer nav {
+            margin-top: 0.5rem;
+        }
+
+        footer nav a {
+            color: #ffcc00;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .quiz-container {
+                padding: 1.5rem;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 12px 22px;
+            }
+
+            header .logo {
+                height: 70px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="image2.png" alt="Quiz Logo" class="logo">
+        <h1>Data Engineering Quiz</h1>
+        <p class="subtitle">Test your Data Engineering knowledge and sharpen your skills</p>
+    </header>
+    <!-- Timer Display -->
+    <div class="timer" id="timer">15:00</div>
+    <main>
+        <div class="quiz-container">
+            <form id="quiz-form">
+                <!-- Question 1 -->
+                <div class="question">
+                    <p>1. What is the primary purpose of a Data Warehouse?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q1" value="A"> A) Store operational data</label>
+                        <label><input type="radio" name="q1" value="B"> B) Analyze historical data</label>
+                        <label><input type="radio" name="q1" value="C"> C) Store files</label>
+                        <label><input type="radio" name="q1" value="D"> D) Manage transactions</label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question">
+                    <p>2. Which of the following is a popular ETL tool?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q2" value="A"> A) Hadoop</label>
+                        <label><input type="radio" name="q2" value="B"> B) Apache NiFi</label>
+                        <label><input type="radio" name="q2" value="C"> C) MySQL</label>
+                        <label><input type="radio" name="q2" value="D"> D) Excel</label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question">
+                    <p>3. What does the acronym "OLAP" stand for?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q3" value="A"> A) Online Analytical Processing</label>
+                        <label><input type="radio" name="q3" value="B"> B) Online Active Processing</label>
+                        <label><input type="radio" name="q3" value="C"> C) Offline Analytical Processing</label>
+                        <label><input type="radio" name="q3" value="D"> B) Open Layered Application Programming</label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question">
+                    <p>4. Which of the following is a NoSQL database?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q4" value="A"> A) MySQL</label>
+                        <label><input type="radio" name="q4" value="B"> B) PostgreSQL</label>
+                        <label><input type="radio" name="q4" value="C"> C) MongoDB</label>
+                        <label><input type="radio" name="q4" value="D"> D) SQLite</label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question">
+                    <p>5. What is the main benefit of using Apache Spark?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q5" value="A"> A) Real-time processing</label>
+                        <label><input type="radio" name="q5" value="B"> B) Batch processing only</label>
+                        <label><input type="radio" name="q5" value="C"> C) Limited scalability</label>
+                        <label><input type="radio" name="q5" value="D"> D) High latency</label>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question">
+                    <p>6. Which programming language is commonly used for data manipulation in Data Engineering?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q6" value="A"> A) Java</label>
+                        <label><input type="radio" name="q6" value="B"> B) Python</label>
+                        <label><input type="radio" name="q6" value="C"> C) C#</label>
+                        <label><input type="radio" name="q6" value="D"> D) Ruby</label>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="question">
+                    <p>7. What is the purpose of a Data Lake?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q7" value="A"> A) Store structured data</label>
+                        <label><input type="radio" name="q7" value="B"> B) Store unstructured data</label>
+                        <label><input type="radio" name="q7" value="C"> C) Store transactional data</label>
+                        <label><input type="radio" name="q7" value="D"> D) Store relational data</label>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="question">
+                    <p>8. What is Apache Kafka primarily used for?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q8" value="A"> A) Batch processing</label>
+                        <label><input type="radio" name="q8" value="B"> B) Stream processing</label>
+                        <label><input type="radio" name="q8" value="C"> C) Data storage</label>
+                        <label><input type="radio" name="q8" value="D"> D) Data visualization</label>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="question">
+                    <p>9. Which SQL clause is used to filter records?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q9" value="A"> A) SELECT</label>
+                        <label><input type="radio" name="q9" value="B"> B) WHERE</label>
+                        <label><input type="radio" name="q9" value="C"> C) FROM</label>
+                        <label><input type="radio" name="q9" value="D"> D) GROUP BY</label>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="question">
+                    <p>10. What is the main purpose of data cleaning?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q10" value="A"> A) Increase data size</label>
+                        <label><input type="radio" name="q10" value="B"> B) Remove errors and inconsistencies</label>
+                        <label><input type="radio" name="q10" value="C"> C) Store data securely</label>
+                        <label><input type="radio" name="q10" value="D"> D) Create backups</label>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="question">
+                    <p>11. Which of the following is a cloud-based data warehouse?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q11" value="A"> A) Amazon S3</label>
+                        <label><input type="radio" name="q11" value="B"> B) Google BigQuery</label>
+                        <label><input type="radio" name="q11" value="C"> C) Microsoft SQL Server</label>
+                        <label><input type="radio" name="q11" value="D"> D) Oracle Database</label>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="question">
+                    <p>12. What is the purpose of indexing in databases?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q12" value="A"> A) Reduce storage</label>
+                        <label><input type="radio" name="q12" value="B"> B) Speed up data retrieval</label>
+                        <label><input type="radio" name="q12" value="C"> C) Ensure data integrity</label>
+                        <label><input type="radio" name="q12" value="D"> D) Perform data backup</label>
+                    </div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="question">
+                    <p>13. Which of the following is NOT a Data Engineering responsibility?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q13" value="A"> A) Data pipeline construction</label>
+                        <label><input type="radio" name="q13" value="B"> B) Data analysis</label>
+                        <label><input type="radio" name="q13" value="C"> C) Data cleaning</label>
+                        <label><input type="radio" name="q13" value="D"> D) Data governance</label>
+                    </div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="question">
+                    <p>14. What is the purpose of a Data Mart?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q14" value="A"> A) Store raw data</label>
+                        <label><input type="radio" name="q14" value="B"> B) Serve specific business lines</label>
+                        <label><input type="radio" name="q14" value="C"> C) Archive historical data</label>
+                        <label><input type="radio" name="q14" value="D"> D) Provide real-time data</label>
+                    </div>
+                </div>
+
+                <!-- Question 15 -->
+                <div class="question">
+                    <p>15. What is the main function of a data governance framework?</p>
+                    <div class="answer-options">
+                        <label><input type="radio" name="q15" value="A"> A) Increase data redundancy</label>
+                        <label><input type="radio" name="q15" value="B"> B) Manage data accessibility and quality</label>
+                        <label><input type="radio" name="q15" value="C"> C) Ensure data is always available</label>
+                        <label><input type="radio" name="q15" value="D"> D) Optimize database performance</label>
+                    </div>
+                </div>
+
+                <button type="submit">Submit Quiz</button>
+            </form>
+        </div>
+        <script>
+            let timeLeft = 15 * 60; // 15 minutes in seconds
+            const timerElement = document.getElementById('timer');
+    
+            function startTimer() {
+                const timerInterval = setInterval(() => {
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        alert("Time's up! Submitting the quiz.");
+                        document.getElementById('quiz-form').submit(); // Auto-submit the form when time is up
+                    } else {
+                        timeLeft--;
+                        displayTime();
+                    }
+                }, 1000);
+            }
+    
+            function displayTime() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }
+    
+            // Start the timer as soon as the page loads
+            window.onload = startTimer;
+        </script>
+       <script>
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            
+            // Correct answers
+            const correctAnswers = ['C',
+    	'A',
+    	'B',
+    	'D',
+    	'A',
+    	'C',
+    	'B',
+    	'D',
+    	'A',
+    	'C',
+    	'B',
+    	'D',
+    	'A',
+    	'C',
+    	'B'];
+    
+           // Array to store correct (1) and wrong (0) answers
+        let resultArray = [];
+
+        // Get student's selected answers
+        const studentAnswers = [
+            document.querySelector('input[name="q1"]:checked')?.value,
+            document.querySelector('input[name="q2"]:checked')?.value,
+            document.querySelector('input[name="q3"]:checked')?.value,
+            document.querySelector('input[name="q4"]:checked')?.value,
+            document.querySelector('input[name="q5"]:checked')?.value,
+            document.querySelector('input[name="q6"]:checked')?.value,
+            document.querySelector('input[name="q7"]:checked')?.value,
+            document.querySelector('input[name="q8"]:checked')?.value,
+            document.querySelector('input[name="q9"]:checked')?.value,
+            document.querySelector('input[name="q10"]:checked')?.value,
+            document.querySelector('input[name="q11"]:checked')?.value,
+            document.querySelector('input[name="q12"]:checked')?.value,
+            document.querySelector('input[name="q13"]:checked')?.value,
+            document.querySelector('input[name="q14"]:checked')?.value,
+            document.querySelector('input[name="q15"]:checked')?.value
+        ];
+
+        // Compare student's answers with correct answers
+        studentAnswers.forEach((answer, index) => {
+            if (answer == correctAnswers[index]) {
+                resultArray.push(1); // Correct answer
+            } else {
+                resultArray.push(0); // Wrong answer
+            }
+        });
+
+        // Prepare data to send to Flask backend
+        const data = {
+            studentName: "{{ student_name }}", // Make sure student name is passed from backend
+            answers: resultArray,
+		course: 'Data Engineering'
+        };
+
+        // Send data to Flask backend via POST
+        fetch('/save-answers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Redirect to the recommendation page with received data
+            window.location.href = `/recommendation?course=${data.course}&answers=${encodeURIComponent(JSON.stringify(resultArray))}`;
+
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+        
+</body>
+</html>
+    
+ 

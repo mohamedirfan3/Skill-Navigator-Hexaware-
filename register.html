@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexware Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/static/register.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container input[type="text"], .form-container input[type="email"], .form-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Hexware Registration</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Name" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="email" name="email" placeholder="Email ID" required>
+            <input type="text" name="degree" placeholder="Degree" required>
+            <input type="text" name="specialization" placeholder="Specialization" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <input type="text" name="certifications" placeholder="Certifications (comma separated)">
+            <input type="text" name="internship" placeholder="Internship Details">
+            <input type="text" name="courses" placeholder="Courses Completed">
+            <input type="text" name="linkedin" placeholder="LinkedIn Profile Link">
+            <input type="text" name="github" placeholder="GitHub Profile Link">
+            <input type="text" name="languages" placeholder="Programming Languages Known">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

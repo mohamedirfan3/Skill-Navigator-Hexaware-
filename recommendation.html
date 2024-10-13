@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #444;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 90%; /* Changed for better responsiveness */
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 24px;
+        }
+        .user-info {
+            background-color: #f1f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .user-info p {
+            margin: 5px 0;
+        }
+        .recommendations {
+            background-color: #f1f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .recommendations ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .recommendations li {
+            background-color: #e3f2fd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            color: #0277bd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .results {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+        .footer a {
+            color: #0277bd;
+            text-decoration: none;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recommended Topics for Improvement:</h1>
+        
+        <!-- User Information Section -->
+        <div class="user-info">
+            <h3>User Information</h3>
+            <p><strong>Email:</strong> {{ user_data.email or 'N/A' }}</p>
+            <p><strong>Degree:</strong> {{ user_data.degree or 'N/A' }}</p>
+            <p><strong>Specialization:</strong> {{ user_data.specialization or 'N/A' }}</p>
+            <p><strong>Phone:</strong> {{ user_data.phone or 'N/A' }}</p>
+            <p><strong>Certifications:</strong> {{ user_data.certifications or 'N/A' }}</p>
+            <p><strong>LinkedIn:</strong> 
+                {% if user_data.linkedin %}
+                    <a href="{{ user_data.linkedin }}" target="_blank">{{ user_data.linkedin }}</a>
+                {% else %}
+                    N/A
+                {% endif %}
+            </p>
+            <p><strong>GitHub:</strong> 
+                {% if user_data.github %}
+                    <a href="{{ user_data.github }}" target="_blank">{{ user_data.github }}</a>
+                {% else %}
+                    N/A
+                {% endif %}
+            </p>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results">
+            <h3>Your Results:</h3>
+            <p><strong>Correct Answers:</strong> {{ correct_count }}</p>
+            <p><strong>Incorrect Answers:</strong> {{ incorrect_count }}</p>
+            <p><strong>Not Attended:</strong> {{ not_attended_count }}</p>
+        </div>
+
+        <div class="recommendations">
+            <h3>Your Recommendations:</h3>
+            <ul>
+                {% for recommendation in recommendations %}
+                    <li>{{ recommendation }}</li> 
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Powered by AI | <a href="#">Learn More</a></p>
+        </div>
+    </div>
+</body>
+</html>
