@@ -6,7 +6,7 @@ import google.generativeai as genai
 import os
 
 # Set Google API Key
-os.environ['GOOGLE_API_KEY'] = "AIzaSyAgaIHfGlas-QilDiOQtr1p9eY0usq2huI"
+os.environ['GOOGLE_API_KEY'] = ""
 genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
 
 # Simple in-memory user storage
@@ -77,7 +77,7 @@ import os
 from firebase_admin import firestore
 
 # Set Google API Key
-os.environ['GOOGLE_API_KEY'] = "AIzaSyAgaIHfGlas-QilDiOQtr1p9eY0usq2huI"
+os.environ['GOOGLE_API_KEY'] = "I"
 genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
 
 # Firebase user collection reference
